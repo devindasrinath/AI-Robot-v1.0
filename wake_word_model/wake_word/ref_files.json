@@ -1,0 +1,48 @@
+{
+  "version": "v1.27-20260206",
+  "files": {
+    "origin_model": {
+      "path": "../export/wake_word.onnx",
+      "last_modify": 1776973132.9577367
+    },
+    "origin_mlir": {
+      "path": "../wake_word_origin.mlir",
+      "last_modify": 1776973171.8350818
+    },
+    "top_mlir": {
+      "path": "../wake_word.mlir",
+      "last_modify": 1776973171.867082
+    },
+    "tpuc_opt": {
+      "path": "../../usr/local/lib/python3.10/dist-packages/tpu_mlir/bin/tpuc-opt",
+      "last_modify": 1776973157.208952
+    },
+    "bmodel": {
+      "path": "../wake_word.cvimodel",
+      "last_modify": 1776973184.5901952
+    },
+    "final_mlir": {
+      "path": "../wake_word_cv181x_int8_sym_final.mlir",
+      "last_modify": 1776973184.572195
+    },
+    "tpu_mlir": {
+      "path": "../wake_word_cv181x_int8_sym_tpu.mlir",
+      "last_modify": 1776973184.5131943
+    },
+    "context_dir": {
+      "path": ".",
+      "last_modify": 1776973184.595195
+    }
+  },
+  "commands": {
+    "transform_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_transform.py --model_name wake_word --model_def /workspace/export/wake_word.onnx --input_shapes [[1,1,40,98]] --mlir wake_word.mlir",
+    "deploy_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_deploy.py --mlir wake_word.mlir --quantize INT8 --calibration_table wake_word_cali_table --chip cv181x --model /workspace/wake_word.cvimodel",
+    "final": "tpuc-opt wake_word_cv181x_int8_sym_tpu.mlir --mlir-disable-threading --strip-io-quant=\"quant_input=False quant_output=False quant_input_list= quant_output_list= quant_output_bf16=False quant_input_int8=False quant_output_int8=False \" --processor-tpu-optimize --dev-parallel --weight-reorder  --subnet-divide=\"dynamic=False\" --op-reorder --topo-sort --layer-group=\"opt=2 group_by_cores=auto compress_mode=none debugger=0 disable_group_overlap=false lgcache=true config_filename= enable_lghash=False lghash_dir=\"  --core-parallel  --after-layergroup-weight-reorder --address-assign -o wake_word_cv181x_int8_sym_final.mlir --debug_cmd=",
+    "bmodel": "tpuc-opt wake_word_cv181x_int8_sym_final.mlir --codegen=\"model_file=/workspace/wake_word.cvimodel embed_debug_info=False model_version=latest bmodel_only=False gdma_check=True\" -o /dev/null"
+  },
+  "properties": {
+    "prefix": "wake_word_cv181x_int8_sym",
+    "chip": "cv181x",
+    "compare_all": false
+  }
+}

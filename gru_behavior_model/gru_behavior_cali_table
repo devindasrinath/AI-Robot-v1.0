@@ -1,0 +1,31 @@
+# mlir version: v1.27-20260206 cali version 1.0
+# mlir: gru_behavior.mlir
+# genetated time: 2026-04-24 03:55:44.241556
+# quantization threshold calculation method: ['kl']
+# histogram number: 2048
+# sample number: 200
+###
+# tune number: 5
+###
+# op_name    threshold    min    max
+obs 1.0000000 0.0000000 1.0000000
+hidden_in 0.0000100 0.0000000 0.0000100
+/Gather_output_0_Gather 1.0000000 0.0000000 1.0000000
+/gru/Wr/Gemm_output_0_Gemm 2.9291303 -2.9291303 2.6580400
+/gru/Ur/MatMul_output_0_MatMul 0.0000100 0.0000000 0.0000100
+/gru/Add_output_0_Add 2.9291303 -2.9291303 2.6580400
+/gru/Sigmoid_output_0_Sigmoid 0.9345049 0.0507322 0.9345049
+/gru/Wz/Gemm_output_0_Gemm 6.2073541 -6.2073541 -0.3057649
+/gru/Uz/MatMul_output_0_MatMul 0.0000100 0.0000000 0.0000100
+/gru/Add_1_output_0_Add 6.2073541 -6.2073541 -0.3057649
+/gru/Sigmoid_1_output_0_Sigmoid 0.4241488 0.0020105 0.4241488
+/gru/Wn/Gemm_output_0_Gemm 2.1012158 -1.8826529 2.1012158
+/gru/Un/Gemm_output_0_Gemm 0.8909000 -0.8909000 0.6619335
+/gru/Mul_output_0_Mul 0.6940187 -0.6940187 0.4667091
+/gru/Add_2_output_0_Add 2.1684806 -2.1684806 2.0628974
+/gru/Tanh_output_0_Tanh 0.9741852 -0.9741852 0.9682121
+/gru/Sub_output_0_Sub 0.9979895 0.5758512 0.9979895
+/gru/Mul_1_output_0_Mul 0.9509317 -0.9495291 0.9509317
+/gru/Mul_2_output_0_Mul 0.0000100 0.0000000 0.0000100
+hidden_out_Add 0.9509317 -0.9495291 0.9509317
+action_logits_Gemm 14.4975891 -13.7345543 14.4975891

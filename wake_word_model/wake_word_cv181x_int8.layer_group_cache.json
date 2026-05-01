@@ -1,0 +1,120 @@
+{
+  "opt": 2,
+  "total subfunc": 2,
+  "subfunc_0": {
+    "subfunc idx": 0,
+    "GroupLayer": [],
+    "GlobalLayer": [
+      {
+        "func_idx": 0,
+        "group_cost": 0,
+        "index": 0,
+        "loc": "mel_input/stem/stem.2/Relu_output_0_Relu_si8"
+      },
+      {
+        "func_idx": 1,
+        "group_cost": 0,
+        "index": 1,
+        "loc": "func.return"
+      }
+    ],
+    "CyclePrefixSum": [
+      {
+        "cycle_prefix_sum": 0,
+        "index": 0,
+        "prefix_end_idx": 0
+      },
+      {
+        "cycle_prefix_sum": 0,
+        "index": 1,
+        "prefix_end_idx": 1
+      }
+    ]
+  },
+  "subfunc_1": {
+    "subfunc idx": 1,
+    "GroupLayer": [
+      {
+        "base_group_idx": 0,
+        "start_idx": 0,
+        "end_idx": 9,
+        "func_start_idx": 0,
+        "func_end_idx": 9,
+        "group_cost": 79329,
+        "index": 0,
+        "locs": [
+          "/stem/stem.2/Relu_output_0_Relu",
+          "/ds_blocks/ds_blocks.0/dw/Conv_output_0_Conv",
+          "/ds_blocks/ds_blocks.0/relu/Relu_output_0_Relu",
+          "/ds_blocks/ds_blocks.1/dw/Conv_output_0_Conv",
+          "/ds_blocks/ds_blocks.1/relu/Relu_output_0_Relu",
+          "/ds_blocks/ds_blocks.2/dw/Conv_output_0_Conv",
+          "/ds_blocks/ds_blocks.2/relu/Relu_output_0_Relu",
+          "/ds_blocks/ds_blocks.3/dw/Conv_output_0_Conv",
+          "/ds_blocks/ds_blocks.3/relu/Relu_output_0_Relu",
+          "/gap/AveragePool_output_0_AveragePool"
+        ],
+        "shape_secs": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "GlobalLayer": [
+      {
+        "index": 1,
+        "func_idx": 10,
+        "group_cost": 0,
+        "loc": "/Reshape_output_0_Reshape"
+      },
+      {
+        "index": 2,
+        "func_idx": 11,
+        "group_cost": 0,
+        "loc": "logits_Gemm"
+      },
+      {
+        "index": 3,
+        "func_idx": 12,
+        "group_cost": 0,
+        "loc": "logits_Gemm_f32"
+      },
+      {
+        "index": 4,
+        "func_idx": 13,
+        "group_cost": 0,
+        "loc": "func.return"
+      }
+    ],
+    "CyclePrefixSum": [
+      {
+        "index": 0,
+        "prefix_end_idx": 9,
+        "cycle_prefix_sum": 79329
+      },
+      {
+        "index": 1,
+        "prefix_end_idx": 10,
+        "cycle_prefix_sum": 79329
+      },
+      {
+        "index": 2,
+        "prefix_end_idx": 11,
+        "cycle_prefix_sum": 79329
+      },
+      {
+        "index": 3,
+        "prefix_end_idx": 12,
+        "cycle_prefix_sum": 79329
+      },
+      {
+        "index": 4,
+        "prefix_end_idx": 13,
+        "cycle_prefix_sum": 79329
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+# mlir version: v1.27-20260206 cali version 1.0
+# mlir: wake_word.mlir
+# genetated time: 2026-04-24 03:39:42.740315
+# quantization threshold calculation method: ['kl']
+# histogram number: 2048
+# sample number: 100
+###
+# tune number: 5
+###
+# op_name    threshold    min    max
+mel_input 1.0000000 0.0000000 1.0000000
+/stem/stem.2/Relu_output_0_Relu 5.1786502 -0.0000000 6.5312252
+/ds_blocks/ds_blocks.0/dw/Conv_output_0_Conv 4.0225458 -4.0225458 3.0316153
+/ds_blocks/ds_blocks.0/relu/Relu_output_0_Relu 4.9672804 -0.0000000 6.8891869
+/ds_blocks/ds_blocks.1/dw/Conv_output_0_Conv 5.0990434 -2.5896342 5.5699921
+/ds_blocks/ds_blocks.1/relu/Relu_output_0_Relu 6.1265267 -0.0000000 7.0761309
+/ds_blocks/ds_blocks.2/dw/Conv_output_0_Conv 4.2311971 -5.4966788 4.7920532
+/ds_blocks/ds_blocks.2/relu/Relu_output_0_Relu 7.3194332 -0.0000000 8.1655836
+/ds_blocks/ds_blocks.3/dw/Conv_output_0_Conv 5.8601395 -5.4488974 8.2793369
+/ds_blocks/ds_blocks.3/relu/Relu_output_0_Relu 7.9646325 -0.0000000 7.9646325
+/gap/AveragePool_output_0_AveragePool 1.9357342 0.0000000 2.0939810
+/Reshape_output_0_Reshape 1.9884831 0.0000000 2.0939810
+logits_Gemm 5.6953726 -5.6953726 4.3230243

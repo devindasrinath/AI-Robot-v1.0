@@ -1,0 +1,48 @@
+{
+  "version": "v1.27-20260206",
+  "files": {
+    "origin_model": {
+      "path": "../export/gru_behavior.onnx",
+      "last_modify": 1776974099.7483256
+    },
+    "origin_mlir": {
+      "path": "../gru_behavior_origin.mlir",
+      "last_modify": 1776974137.4446607
+    },
+    "top_mlir": {
+      "path": "../gru_behavior.mlir",
+      "last_modify": 1776974137.4746609
+    },
+    "tpuc_opt": {
+      "path": "../../usr/local/lib/python3.10/dist-packages/tpu_mlir/bin/tpuc-opt",
+      "last_modify": 1776974118.021488
+    },
+    "bmodel": {
+      "path": "../gru_behavior.cvimodel",
+      "last_modify": 1776974145.5047321
+    },
+    "final_mlir": {
+      "path": "../gru_behavior_cv181x_int8_sym_final.mlir",
+      "last_modify": 1776974145.484732
+    },
+    "tpu_mlir": {
+      "path": "../gru_behavior_cv181x_int8_sym_tpu.mlir",
+      "last_modify": 1776974145.4007313
+    },
+    "context_dir": {
+      "path": ".",
+      "last_modify": 1776974145.5097322
+    }
+  },
+  "commands": {
+    "transform_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_transform.py --model_name gru_behavior --model_def /workspace/export/gru_behavior.onnx --input_shapes [[1,1,16],[1,64]] --mlir gru_behavior.mlir",
+    "deploy_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_deploy.py --mlir gru_behavior.mlir --quantize INT8 --calibration_table gru_behavior_cali_table --chip cv181x --model /workspace/gru_behavior.cvimodel",
+    "final": "tpuc-opt gru_behavior_cv181x_int8_sym_tpu.mlir --mlir-disable-threading --strip-io-quant=\"quant_input=False quant_output=False quant_input_list= quant_output_list= quant_output_bf16=False quant_input_int8=False quant_output_int8=False \" --processor-tpu-optimize --dev-parallel --weight-reorder  --subnet-divide=\"dynamic=False\" --op-reorder --topo-sort --layer-group=\"opt=2 group_by_cores=auto compress_mode=none debugger=0 disable_group_overlap=false lgcache=true config_filename= enable_lghash=False lghash_dir=\"  --core-parallel  --after-layergroup-weight-reorder --address-assign -o gru_behavior_cv181x_int8_sym_final.mlir --debug_cmd=",
+    "bmodel": "tpuc-opt gru_behavior_cv181x_int8_sym_final.mlir --codegen=\"model_file=/workspace/gru_behavior.cvimodel embed_debug_info=False model_version=latest bmodel_only=False gdma_check=True\" -o /dev/null"
+  },
+  "properties": {
+    "prefix": "gru_behavior_cv181x_int8_sym",
+    "chip": "cv181x",
+    "compare_all": false
+  }
+}

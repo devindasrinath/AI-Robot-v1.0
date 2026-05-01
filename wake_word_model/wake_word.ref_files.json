@@ -1,0 +1,20 @@
+{
+  "version": "v1.27-20260206",
+  "files": {
+    "origin_model": {
+      "path": "export/wake_word.onnx",
+      "last_modify": 1776973132.9577367
+    },
+    "origin_mlir": {
+      "path": "wake_word_origin.mlir",
+      "last_modify": 1776973171.8350818
+    },
+    "top_mlir": {
+      "path": "wake_word.mlir",
+      "last_modify": 1776973171.867082
+    }
+  },
+  "commands": {
+    "transform_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_transform.py --model_name wake_word --model_def /workspace/export/wake_word.onnx --input_shapes [[1,1,40,98]] --mlir wake_word.mlir"
+  }
+}

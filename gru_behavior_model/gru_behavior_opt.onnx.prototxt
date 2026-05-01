@@ -1,0 +1,564 @@
+ir_version: 7
+producer_name: "pytorch"
+producer_version: "2.10.0"
+graph {
+  node {
+    input: "obs"
+    input: "/Constant_output_0"
+    output: "/Gather_output_0"
+    name: "/Gather"
+    op_type: "Gather"
+    attribute {
+      name: "axis"
+      i: 1
+      type: INT
+    }
+  }
+  node {
+    input: "/Gather_output_0"
+    input: "gru.Wr.weight"
+    input: "gru.Wr.bias"
+    output: "/gru/Wr/Gemm_output_0"
+    name: "/gru/Wr/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  node {
+    input: "hidden_in"
+    input: "onnx::MatMul_37"
+    output: "/gru/Ur/MatMul_output_0"
+    name: "/gru/Ur/MatMul"
+    op_type: "MatMul"
+  }
+  node {
+    input: "/gru/Wr/Gemm_output_0"
+    input: "/gru/Ur/MatMul_output_0"
+    output: "/gru/Add_output_0"
+    name: "/gru/Add"
+    op_type: "Add"
+  }
+  node {
+    input: "/gru/Add_output_0"
+    output: "/gru/Sigmoid_output_0"
+    name: "/gru/Sigmoid"
+    op_type: "Sigmoid"
+  }
+  node {
+    input: "/Gather_output_0"
+    input: "gru.Wz.weight"
+    input: "gru.Wz.bias"
+    output: "/gru/Wz/Gemm_output_0"
+    name: "/gru/Wz/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  node {
+    input: "hidden_in"
+    input: "onnx::MatMul_38"
+    output: "/gru/Uz/MatMul_output_0"
+    name: "/gru/Uz/MatMul"
+    op_type: "MatMul"
+  }
+  node {
+    input: "/gru/Wz/Gemm_output_0"
+    input: "/gru/Uz/MatMul_output_0"
+    output: "/gru/Add_1_output_0"
+    name: "/gru/Add_1"
+    op_type: "Add"
+  }
+  node {
+    input: "/gru/Add_1_output_0"
+    output: "/gru/Sigmoid_1_output_0"
+    name: "/gru/Sigmoid_1"
+    op_type: "Sigmoid"
+  }
+  node {
+    input: "/Gather_output_0"
+    input: "gru.Wn.weight"
+    input: "gru.Wn.bias"
+    output: "/gru/Wn/Gemm_output_0"
+    name: "/gru/Wn/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  node {
+    input: "hidden_in"
+    input: "gru.Un.weight"
+    input: "gru.Un.bias"
+    output: "/gru/Un/Gemm_output_0"
+    name: "/gru/Un/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  node {
+    input: "/gru/Sigmoid_output_0"
+    input: "/gru/Un/Gemm_output_0"
+    output: "/gru/Mul_output_0"
+    name: "/gru/Mul"
+    op_type: "Mul"
+  }
+  node {
+    input: "/gru/Wn/Gemm_output_0"
+    input: "/gru/Mul_output_0"
+    output: "/gru/Add_2_output_0"
+    name: "/gru/Add_2"
+    op_type: "Add"
+  }
+  node {
+    input: "/gru/Add_2_output_0"
+    output: "/gru/Tanh_output_0"
+    name: "/gru/Tanh"
+    op_type: "Tanh"
+  }
+  node {
+    input: "/gru/Constant_output_0"
+    input: "/gru/Sigmoid_1_output_0"
+    output: "/gru/Sub_output_0"
+    name: "/gru/Sub"
+    op_type: "Sub"
+  }
+  node {
+    input: "/gru/Sub_output_0"
+    input: "/gru/Tanh_output_0"
+    output: "/gru/Mul_1_output_0"
+    name: "/gru/Mul_1"
+    op_type: "Mul"
+  }
+  node {
+    input: "/gru/Sigmoid_1_output_0"
+    input: "hidden_in"
+    output: "/gru/Mul_2_output_0"
+    name: "/gru/Mul_2"
+    op_type: "Mul"
+  }
+  node {
+    input: "/gru/Mul_1_output_0"
+    input: "/gru/Mul_2_output_0"
+    output: "hidden_out"
+    name: "/gru/Add_3"
+    op_type: "Add"
+  }
+  node {
+    input: "hidden_out"
+    input: "head.weight"
+    input: "head.bias"
+    output: "action_logits"
+    name: "/head/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  name: "main_graph"
+  input {
+    name: "obs"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 16
+          }
+        }
+      }
+    }
+  }
+  input {
+    name: "hidden_in"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  output {
+    name: "action_logits"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 12
+          }
+        }
+      }
+    }
+  }
+  output {
+    name: "hidden_out"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/Gather_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 16
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Wr/Gemm_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Ur/MatMul_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Add_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Sigmoid_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Wz/Gemm_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Uz/MatMul_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Add_1_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Sigmoid_1_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Wn/Gemm_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Un/Gemm_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Mul_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Add_2_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Tanh_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Sub_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Mul_1_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gru/Mul_2_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+}
+opset_import {
+  domain: ""
+  version: 13
+}

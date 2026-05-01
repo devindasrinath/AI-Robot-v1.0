@@ -1,0 +1,20 @@
+{
+  "version": "v1.27-20260206",
+  "files": {
+    "origin_model": {
+      "path": "export/gru_behavior.onnx",
+      "last_modify": 1776974099.7483256
+    },
+    "origin_mlir": {
+      "path": "gru_behavior_origin.mlir",
+      "last_modify": 1776974137.4446607
+    },
+    "top_mlir": {
+      "path": "gru_behavior.mlir",
+      "last_modify": 1776974137.4746609
+    }
+  },
+  "commands": {
+    "transform_cmd": "/usr/local/lib/python3.10/dist-packages/tpu_mlir/python/tools/model_transform.py --model_name gru_behavior --model_def /workspace/export/gru_behavior.onnx --input_shapes [[1,1,16],[1,64]] --mlir gru_behavior.mlir"
+  }
+}

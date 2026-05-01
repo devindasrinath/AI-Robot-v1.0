@@ -53,3 +53,46 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+
+# Build folders
+build/
+*/build/
+
+
+
+# ESP32 logs
+*.log
+idf_py_stdout_output_*
+
+# Python
+__pycache__/
+*.pyc
+
+# Models (adjust if needed)
+*.pt
+*.pth
+*.onnx
+*.bin
+
+# SDK (DO NOT TRACK)
+cvitek-tdl-sdk-sg200x/
+
+# IDE / local
+.claude/
+.vscode/
+
+
+# Datasets
+wake_word_model/data/
+*.wav
+
+# ML artifacts
+*.pt
+*.pth
+*.onnx
+
+# Just in case
+*.zip
+*.tar
+*.gz

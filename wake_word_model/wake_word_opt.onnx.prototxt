@@ -1,0 +1,837 @@
+ir_version: 7
+producer_name: "pytorch"
+producer_version: "2.10.0"
+graph {
+  node {
+    input: "mel_input"
+    input: "onnx::Conv_67"
+    input: "onnx::Conv_68"
+    output: "/stem/stem.0/Conv_output_0"
+    name: "/stem/stem.0/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 3
+      ints: 3
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 1
+      ints: 1
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/stem/stem.0/Conv_output_0"
+    output: "/stem/stem.2/Relu_output_0"
+    name: "/stem/stem.2/Relu"
+    op_type: "Relu"
+  }
+  node {
+    input: "/stem/stem.2/Relu_output_0"
+    input: "ds_blocks.0.dw.weight"
+    output: "/ds_blocks/ds_blocks.0/dw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.0/dw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 32
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 3
+      ints: 3
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 1
+      ints: 1
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 2
+      ints: 2
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.0/dw/Conv_output_0"
+    input: "onnx::Conv_70"
+    input: "onnx::Conv_71"
+    output: "/ds_blocks/ds_blocks.0/pw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.0/pw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 0
+      ints: 0
+      ints: 0
+      ints: 0
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.0/pw/Conv_output_0"
+    output: "/ds_blocks/ds_blocks.0/relu/Relu_output_0"
+    name: "/ds_blocks/ds_blocks.0/relu/Relu"
+    op_type: "Relu"
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.0/relu/Relu_output_0"
+    input: "ds_blocks.1.dw.weight"
+    output: "/ds_blocks/ds_blocks.1/dw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.1/dw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 32
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 3
+      ints: 3
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 1
+      ints: 1
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 2
+      ints: 2
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.1/dw/Conv_output_0"
+    input: "onnx::Conv_73"
+    input: "onnx::Conv_74"
+    output: "/ds_blocks/ds_blocks.1/pw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.1/pw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 0
+      ints: 0
+      ints: 0
+      ints: 0
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.1/pw/Conv_output_0"
+    output: "/ds_blocks/ds_blocks.1/relu/Relu_output_0"
+    name: "/ds_blocks/ds_blocks.1/relu/Relu"
+    op_type: "Relu"
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.1/relu/Relu_output_0"
+    input: "ds_blocks.2.dw.weight"
+    output: "/ds_blocks/ds_blocks.2/dw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.2/dw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 64
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 3
+      ints: 3
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 1
+      ints: 1
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 2
+      ints: 2
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.2/dw/Conv_output_0"
+    input: "onnx::Conv_76"
+    input: "onnx::Conv_77"
+    output: "/ds_blocks/ds_blocks.2/pw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.2/pw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 0
+      ints: 0
+      ints: 0
+      ints: 0
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.2/pw/Conv_output_0"
+    output: "/ds_blocks/ds_blocks.2/relu/Relu_output_0"
+    name: "/ds_blocks/ds_blocks.2/relu/Relu"
+    op_type: "Relu"
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.2/relu/Relu_output_0"
+    input: "ds_blocks.3.dw.weight"
+    output: "/ds_blocks/ds_blocks.3/dw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.3/dw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 64
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 3
+      ints: 3
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 1
+      ints: 1
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.3/dw/Conv_output_0"
+    input: "onnx::Conv_79"
+    input: "onnx::Conv_80"
+    output: "/ds_blocks/ds_blocks.3/pw/Conv_output_0"
+    name: "/ds_blocks/ds_blocks.3/pw/Conv"
+    op_type: "Conv"
+    attribute {
+      name: "dilations"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "group"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 0
+      ints: 0
+      ints: 0
+      ints: 0
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 1
+      ints: 1
+      type: INTS
+    }
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.3/pw/Conv_output_0"
+    output: "/ds_blocks/ds_blocks.3/relu/Relu_output_0"
+    name: "/ds_blocks/ds_blocks.3/relu/Relu"
+    op_type: "Relu"
+  }
+  node {
+    input: "/ds_blocks/ds_blocks.3/relu/Relu_output_0"
+    output: "/gap/AveragePool_output_0"
+    name: "/gap/AveragePool"
+    op_type: "AveragePool"
+    attribute {
+      name: "ceil_mode"
+      i: 0
+      type: INT
+    }
+    attribute {
+      name: "count_include_pad"
+      i: 1
+      type: INT
+    }
+    attribute {
+      name: "kernel_shape"
+      ints: 5
+      ints: 13
+      type: INTS
+    }
+    attribute {
+      name: "pads"
+      ints: 0
+      ints: 0
+      ints: 0
+      ints: 0
+      type: INTS
+    }
+    attribute {
+      name: "strides"
+      ints: 5
+      ints: 13
+      type: INTS
+    }
+  }
+  node {
+    input: "/gap/AveragePool_output_0"
+    input: "/Constant_output_0"
+    output: "/Reshape_output_0"
+    name: "/Reshape"
+    op_type: "Reshape"
+  }
+  node {
+    input: "/Reshape_output_0"
+    input: "classifier.weight"
+    input: "classifier.bias"
+    output: "logits"
+    name: "/classifier/Gemm"
+    op_type: "Gemm"
+    attribute {
+      name: "alpha"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "beta"
+      f: 1.0
+      type: FLOAT
+    }
+    attribute {
+      name: "transB"
+      i: 1
+      type: INT
+    }
+  }
+  name: "main_graph"
+  input {
+    name: "mel_input"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 40
+          }
+          dim {
+            dim_value: 98
+          }
+        }
+      }
+    }
+  }
+  output {
+    name: "logits"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 2
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/stem/stem.0/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 40
+          }
+          dim {
+            dim_value: 98
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/stem/stem.2/Relu_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 40
+          }
+          dim {
+            dim_value: 98
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.0/dw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 20
+          }
+          dim {
+            dim_value: 49
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.0/pw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 20
+          }
+          dim {
+            dim_value: 49
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.0/relu/Relu_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 20
+          }
+          dim {
+            dim_value: 49
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.1/dw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 32
+          }
+          dim {
+            dim_value: 10
+          }
+          dim {
+            dim_value: 25
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.1/pw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 10
+          }
+          dim {
+            dim_value: 25
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.1/relu/Relu_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 10
+          }
+          dim {
+            dim_value: 25
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.2/dw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.2/pw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.2/relu/Relu_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.3/dw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.3/pw/Conv_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/ds_blocks/ds_blocks.3/relu/Relu_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 5
+          }
+          dim {
+            dim_value: 13
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/gap/AveragePool_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 1
+          }
+        }
+      }
+    }
+  }
+  value_info {
+    name: "/Reshape_output_0"
+    type {
+      tensor_type {
+        elem_type: 1
+        shape {
+          dim {
+            dim_value: 1
+          }
+          dim {
+            dim_value: 64
+          }
+        }
+      }
+    }
+  }
+}
+opset_import {
+  domain: ""
+  version: 13
+}

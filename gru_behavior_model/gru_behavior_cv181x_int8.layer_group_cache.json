@@ -1,0 +1,435 @@
+{
+  "opt": 2,
+  "total subfunc": 3,
+  "subfunc_0": {
+    "subfunc idx": 0,
+    "GroupLayer": [],
+    "GlobalLayer": [
+      {
+        "func_idx": 0,
+        "group_cost": 0,
+        "index": 0,
+        "loc": "obs/Gather_output_0_Gather_si8"
+      },
+      {
+        "func_idx": 1,
+        "group_cost": 0,
+        "index": 1,
+        "loc": "func.return"
+      }
+    ],
+    "CyclePrefixSum": [
+      {
+        "cycle_prefix_sum": 0,
+        "index": 0,
+        "prefix_end_idx": 0
+      },
+      {
+        "cycle_prefix_sum": 0,
+        "index": 1,
+        "prefix_end_idx": 1
+      }
+    ]
+  },
+  "subfunc_1": {
+    "subfunc idx": 1,
+    "GroupLayer": [],
+    "GlobalLayer": [
+      {
+        "func_idx": 0,
+        "group_cost": 0,
+        "index": 0,
+        "loc": "hidden_in/gru/Ur/MatMul_output_0_MatMul_si8"
+      },
+      {
+        "func_idx": 1,
+        "group_cost": 0,
+        "index": 1,
+        "loc": "func.return"
+      }
+    ],
+    "CyclePrefixSum": [
+      {
+        "cycle_prefix_sum": 0,
+        "index": 0,
+        "prefix_end_idx": 0
+      },
+      {
+        "cycle_prefix_sum": 0,
+        "index": 1,
+        "prefix_end_idx": 1
+      }
+    ]
+  },
+  "subfunc_2": {
+    "subfunc idx": 2,
+    "GroupLayer": [],
+    "GlobalLayer": [
+      {
+        "index": 0,
+        "func_idx": 0,
+        "group_cost": 0,
+        "loc": "/gru/Un/Gemm_output_0_Gemm"
+      },
+      {
+        "index": 1,
+        "func_idx": 1,
+        "group_cost": 0,
+        "loc": "/gru/Uz/MatMul_output_0_MatMul"
+      },
+      {
+        "index": 2,
+        "func_idx": 2,
+        "group_cost": 0,
+        "loc": "/gru/Ur/MatMul_output_0_MatMul"
+      },
+      {
+        "index": 3,
+        "func_idx": 3,
+        "group_cost": 0,
+        "loc": "/Gather_output_0_Gather"
+      },
+      {
+        "index": 4,
+        "func_idx": 4,
+        "group_cost": 0,
+        "loc": "/gru/Wn/Gemm_output_0_Gemm"
+      },
+      {
+        "index": 5,
+        "func_idx": 5,
+        "group_cost": 0,
+        "loc": "/gru/Wz/Gemm_output_0_Gemm"
+      },
+      {
+        "index": 6,
+        "func_idx": 6,
+        "group_cost": 0,
+        "loc": "/gru/Wr/Gemm_output_0_Gemm"
+      },
+      {
+        "index": 7,
+        "func_idx": 7,
+        "group_cost": 0,
+        "loc": "/gru/Wr/Gemm_output_0_Gemm/gru/Add_output_0_Add_bf16"
+      },
+      {
+        "index": 8,
+        "func_idx": 8,
+        "group_cost": 0,
+        "loc": "/gru/Uz/MatMul_output_0_MatMul/gru/Add_1_output_0_Add_bf16"
+      },
+      {
+        "index": 9,
+        "func_idx": 9,
+        "group_cost": 0,
+        "loc": "/gru/Wz/Gemm_output_0_Gemm/gru/Add_1_output_0_Add_bf16"
+      },
+      {
+        "index": 10,
+        "func_idx": 10,
+        "group_cost": 0,
+        "loc": "/gru/Add_1_output_0_Add"
+      },
+      {
+        "index": 11,
+        "func_idx": 11,
+        "group_cost": 0,
+        "loc": "/gru/Add_1_output_0_Add/gru/Sigmoid_1_output_0_Sigmoid_si8"
+      },
+      {
+        "index": 12,
+        "func_idx": 12,
+        "group_cost": 0,
+        "loc": "/gru/Sigmoid_1_output_0_Sigmoid"
+      },
+      {
+        "index": 13,
+        "func_idx": 13,
+        "group_cost": 0,
+        "loc": "/gru/Mul_2_output_0_Mul"
+      },
+      {
+        "index": 14,
+        "func_idx": 14,
+        "group_cost": 0,
+        "loc": "/gru/Mul_2_output_0_Mulhidden_out_Add_bf16"
+      },
+      {
+        "index": 15,
+        "func_idx": 15,
+        "group_cost": 0,
+        "loc": "/gru/Sigmoid_1_output_0_Sigmoid/gru/Sub_output_0_Sub_bf16"
+      },
+      {
+        "index": 16,
+        "func_idx": 16,
+        "group_cost": 0,
+        "loc": "/gru/Sub_output_0_Sub"
+      },
+      {
+        "index": 17,
+        "func_idx": 17,
+        "group_cost": 0,
+        "loc": "/gru/Sub_output_0_Sub/gru/Mul_1_output_0_Mul_si8"
+      },
+      {
+        "index": 18,
+        "func_idx": 18,
+        "group_cost": 0,
+        "loc": "/gru/Ur/MatMul_output_0_MatMul/gru/Add_output_0_Add_bf16"
+      },
+      {
+        "index": 19,
+        "func_idx": 19,
+        "group_cost": 0,
+        "loc": "/gru/Add_output_0_Add"
+      },
+      {
+        "index": 20,
+        "func_idx": 20,
+        "group_cost": 0,
+        "loc": "/gru/Add_output_0_Add/gru/Sigmoid_output_0_Sigmoid_si8"
+      },
+      {
+        "index": 21,
+        "func_idx": 21,
+        "group_cost": 0,
+        "loc": "/gru/Sigmoid_output_0_Sigmoid"
+      },
+      {
+        "index": 22,
+        "func_idx": 22,
+        "group_cost": 0,
+        "loc": "/gru/Mul_output_0_Mul"
+      },
+      {
+        "index": 23,
+        "func_idx": 23,
+        "group_cost": 0,
+        "loc": "/gru/Add_2_output_0_Add"
+      },
+      {
+        "index": 24,
+        "func_idx": 24,
+        "group_cost": 0,
+        "loc": "/gru/Tanh_output_0_Tanh"
+      },
+      {
+        "index": 25,
+        "func_idx": 25,
+        "group_cost": 0,
+        "loc": "/gru/Mul_1_output_0_Mul"
+      },
+      {
+        "index": 26,
+        "func_idx": 26,
+        "group_cost": 0,
+        "loc": "/gru/Mul_1_output_0_Mulhidden_out_Add_bf16"
+      },
+      {
+        "index": 27,
+        "func_idx": 27,
+        "group_cost": 0,
+        "loc": "hidden_out_Add"
+      },
+      {
+        "index": 28,
+        "func_idx": 28,
+        "group_cost": 0,
+        "loc": "hidden_out_Addaction_logits_Gemm_si8"
+      },
+      {
+        "index": 29,
+        "func_idx": 29,
+        "group_cost": 0,
+        "loc": "action_logits_Gemm"
+      },
+      {
+        "index": 30,
+        "func_idx": 30,
+        "group_cost": 0,
+        "loc": "action_logits_Gemm_f32"
+      },
+      {
+        "index": 31,
+        "func_idx": 31,
+        "group_cost": 0,
+        "loc": "hidden_out_Add_f32"
+      },
+      {
+        "index": 32,
+        "func_idx": 32,
+        "group_cost": 0,
+        "loc": "func.return"
+      }
+    ],
+    "CyclePrefixSum": [
+      {
+        "index": 0,
+        "prefix_end_idx": 0,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 1,
+        "prefix_end_idx": 1,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 2,
+        "prefix_end_idx": 2,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 3,
+        "prefix_end_idx": 3,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 4,
+        "prefix_end_idx": 4,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 5,
+        "prefix_end_idx": 5,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 6,
+        "prefix_end_idx": 6,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 7,
+        "prefix_end_idx": 7,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 8,
+        "prefix_end_idx": 8,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 9,
+        "prefix_end_idx": 9,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 10,
+        "prefix_end_idx": 10,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 11,
+        "prefix_end_idx": 11,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 12,
+        "prefix_end_idx": 12,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 13,
+        "prefix_end_idx": 13,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 14,
+        "prefix_end_idx": 14,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 15,
+        "prefix_end_idx": 15,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 16,
+        "prefix_end_idx": 16,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 17,
+        "prefix_end_idx": 17,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 18,
+        "prefix_end_idx": 18,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 19,
+        "prefix_end_idx": 19,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 20,
+        "prefix_end_idx": 20,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 21,
+        "prefix_end_idx": 21,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 22,
+        "prefix_end_idx": 22,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 23,
+        "prefix_end_idx": 23,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 24,
+        "prefix_end_idx": 24,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 25,
+        "prefix_end_idx": 25,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 26,
+        "prefix_end_idx": 26,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 27,
+        "prefix_end_idx": 27,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 28,
+        "prefix_end_idx": 28,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 29,
+        "prefix_end_idx": 29,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 30,
+        "prefix_end_idx": 30,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 31,
+        "prefix_end_idx": 31,
+        "cycle_prefix_sum": 0
+      },
+      {
+        "index": 32,
+        "prefix_end_idx": 32,
+        "cycle_prefix_sum": 0
+      }
+    ]
+  }
+}

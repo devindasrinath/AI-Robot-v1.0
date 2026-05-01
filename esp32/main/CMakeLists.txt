@@ -1,0 +1,18 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "display/st7789.c"
+        "display/gfx.c"
+        "display/face.c"
+        "uart_comm/uart_comm.c"
+        "sensors/touch.c"
+        "audio/i2s_audio.c"
+    INCLUDE_DIRS
+        "."
+        "display"
+        "uart_comm"
+        "sensors"
+        "audio"
+    REQUIRES
+        driver
+)
