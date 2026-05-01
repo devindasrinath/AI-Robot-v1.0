@@ -132,9 +132,11 @@ typedef struct {
 
 static void saccade_tick(Saccade *s, float rx)
 {
-    /* Lerp toward target — fast (t=0.25) so saccades feel snappy */
-    s->dx += 0.25f * (s->target_dx - s->dx);
-    s->dy += 0.25f * (s->target_dy - s->dy);
+    /* Lerp toward target — t=0.12 gives a smooth ballistic slide (was 0.25
+     * which made the eye jump rather than move).  Real saccades accelerate
+     * and decelerate; this simple lerp approximates that well at ~30fps. */
+    s->dx += 0.12f * (s->target_dx - s->dx);
+    s->dy += 0.12f * (s->target_dy - s->dy);
     s->phase -= 1.0f;
     if (s->phase <= 0.0f) {
         /* Pick a new random gaze target within the sclera */
@@ -392,7 +394,19 @@ static void render_mouth(
      * shared pixels when it runs immediately after.
      */
     float shape_top_f = is_circle ? (cy - circle_r) : (lo_cy - radius - 3.5f);
-    int16_t by     = imax(0,       (int16_t)shape_top_f - 2);
+    int16_t by_shape  = imax(0, (int16_t)shape_top_f - 2);
+    /*
+     * FLICKER FIX: Clamp the mouth bounding-box top to EYE_REGION_BOTTOM
+     * unless the shape genuinely extends above that line (ALERT O-circle can
+     * reach y≈162).  Without this clamp, render_mouth() opens a set_window
+     * that covers eye-region rows and streams BG pixels there every tick.
+     * render_eye() runs after and repairs those rows — but the ILI9341 has
+     * already latched the BG colour for one frame, producing a dark box that
+     * flickers with breathing and saccades.  By starting the window at or
+     * below EYE_REGION_BOTTOM we never touch those rows, so there is nothing
+     * to repair and the flicker disappears completely.
+     */
+    int16_t by = (by_shape < EYE_REGION_BOTTOM) ? EYE_REGION_BOTTOM : by_shape;
     int16_t by_end = imin(LCD_H-1, hi_cy + MARG);
     int16_t bw     = bx_end - bx + 1;
     if (bw <= 0 || by > by_end) return;
@@ -502,8 +516,8 @@ static void draw_zzz(uint32_t tick)
  */
 #define EYE_K   0.10f
 #define EYE_D   0.78f
-#define MOUTH_K 0.07f
-#define MOUTH_D 0.80f
+#define MOUTH_K 0.04f   /* was 0.07 — softer pull gives a longer, more fluid glide */
+#define MOUTH_D 0.84f   /* was 0.80 — higher damping prevents arc overshoot wobble */
 
 void face_tick(void)
 {
@@ -575,6 +589,7 @@ void face_tick(void)
     s_anim.breath_phase += 0.005f;
     float breath_wave  = sinf(s_anim.breath_phase);
     float breath_scale = 1.0f + 0.08f * breath_wave;
+    float breath_rx_scale = 1.0f + 0.03f * breath_wave; /* subtle horizontal swell */
     float breath_cy    = -2.0f * breath_wave;   /* eye rides up on inhale */
 
     /* ── Pupil saccades ───────────────────────────────────────────────────── */
@@ -587,9 +602,9 @@ void face_tick(void)
 
     int16_t el_cy = EYE_BASE_CY + (int16_t)(s_anim.cy_off_l.val + breath_cy);
     int16_t er_cy = EYE_BASE_CY + (int16_t)(s_anim.cy_off_r.val + breath_cy);
-    int16_t el_rx = (int16_t)s_anim.rx_l.val;
+    int16_t el_rx = (int16_t)(s_anim.rx_l.val * breath_rx_scale);
     int16_t el_ry = (int16_t)(s_anim.ry_l.val * combined_l);
-    int16_t er_rx = (int16_t)s_anim.rx_r.val;
+    int16_t er_rx = (int16_t)(s_anim.rx_r.val * breath_rx_scale);
     int16_t er_ry = (int16_t)(s_anim.ry_r.val * combined_r);
     int16_t m_cy  = MOUTH_BASE_CY + (int16_t)s_anim.m_cy_off.val;
 
